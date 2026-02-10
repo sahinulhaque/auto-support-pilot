@@ -1,7 +1,7 @@
 
 ---
 
-# Auto-Support-Pilot: Enterprise Multi-Agent Orchestration 🤖
+# Agent-Support-Pilot: Enterprise Multi-Agent Orchestration 🤖
 
 **High-Performance AI Agent Architecture | LangGraph | FastAPI | RAG | Human-in-the-Loop**
 
@@ -14,9 +14,9 @@
 
 ## 🚀 The Vision
 
-Auto-Support-Pilot is a **Stateful Agentic System** designed to handle complex, non-linear customer support journeys. By utilizing cyclic graphs instead of linear chains, the system can self-correct, loop back for missing information, and escalate to humans only when necessary. 
+Agent-Support-Pilot is a **Stateful Agentic System** designed to handle complex, non-linear customer support journeys. By utilizing cyclic graphs instead of linear chains, the system can self-correct, loop back for missing information, and escalate to humans only when necessary. 
 
-**Project Title:**    Auto Support Pilot
+**Project Title:**    Agent Support Pilot
 
 **The Problem:**      Traditional support bots are linera and brittle.
 
