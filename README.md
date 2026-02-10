@@ -14,7 +14,11 @@
 
 ## 🚀 The Vision
 
-Auto-Support-Pilot is a **Stateful Agentic System** designed to handle complex, non-linear customer support journeys. By utilizing cyclic graphs instead of linear chains, the system can self-correct, loop back for missing information, and escalate to humans only when necessary. This architecture is designed to bridge the gap between experimental LLM scripts and production-ready enterprise services.
+Auto-Support-Pilot is a **Stateful Agentic System** designed to handle complex, non-linear customer support journeys. By utilizing cyclic graphs instead of linear chains, the system can self-correct, loop back for missing information, and escalate to humans only when necessary. 
+
+**Project Title:**    Auto Support Pilot
+**The Problem:**      Traditional support bots are linera and brittle.
+**The Solution:**     A multi-agent system built on LangGraph that uses a state-of-art machine approach and Python, LangChain intelligence layer to handle non-deterministic workflow.
 
 ---
 
@@ -83,6 +87,7 @@ Architecture is built with a clear separation between development agility and pr
 * **Cost Efficiency**: Smart routing to SLMs (Small Language Models) for general chat reduces API overhead by ~30%.
 * **Human-in-the-Loop**: Designed to reduce support ticket volume by automating the 80% of repetitive queries, freeing human agents for high-value tasks.
 * **Accuracy**: RAG-constrained prompts eliminate hallucinations by strictly grounding responses in the `VectorDB` context.
+* **Reliability**: Pydantic schema validation build a guardrail against each request from the user in the web socket then to the Langraph Nodes then json response to user. 
 
 ---
 
