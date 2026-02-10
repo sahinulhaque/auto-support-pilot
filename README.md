@@ -69,6 +69,22 @@ Architecture is built with a clear separation between development agility and pr
 * **Contextual Integrity**: Leveraged native Document Loader partitioning with tuned Overlap Management to ensure seamless context continuity and prevent loss of semantic meaning at segment boundaries.
 * **Token Optimization**: Reduced operational costs and latency (approx. **-40%**) by implementing request-scoped `output_max_token` and `reasoning_effort` configurations per node.
 
+### 3. Frontend Integration (Upcoming)
+The system is designed with a **Headless UI**, allowing for seamless integration with modern web frameworks.
+* **Angular Enterprise Suite**: Currently architecting a high-performance dashboard using **Angular 21** to provide real-time monitoring of agent states, token usage, and human-in-the-loop intervention interfaces.
+* **Reactive State**: Utilizing RxJS for managing real-time WebSocket streams between the FastAPI backend and the Angular frontend.
+
+---
+
+## 🗺 Project Roadmap
+
+| Phase | Milestone | Tech Stack | Status |
+| :--- | :--- | :--- | :--- |
+| **Phase 1** | Core Graph & RAG Pipeline | LangGraph, ChromaDB | ✅ Complete |
+| **Phase 2** | Async Persistence & Scaling | aiosqlite, FastAPI | ✅ Complete |
+| **Phase 3** | **Next Gen Frontend** | **Angular, Tailwind CSS** | 🚧 In Progress |
+| **Phase 4** | Advanced Observability | LangSmith, Prometheus | 📅 Planned |
+
 ---
 
 ## 💻 Technical Proficiencies
