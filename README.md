@@ -17,7 +17,9 @@
 Auto-Support-Pilot is a **Stateful Agentic System** designed to handle complex, non-linear customer support journeys. By utilizing cyclic graphs instead of linear chains, the system can self-correct, loop back for missing information, and escalate to humans only when necessary. 
 
 **Project Title:**    Auto Support Pilot
+
 **The Problem:**      Traditional support bots are linera and brittle.
+
 **The Solution:**     A multi-agent system built on LangGraph that uses a state-of-art machine approach and Python, LangChain intelligence layer to handle non-deterministic workflow.
 
 ---
