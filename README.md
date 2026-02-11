@@ -18,7 +18,7 @@ Agent-Support-Pilot is a **Stateful Agentic System** designed to handle complex,
 
 **Project Title:**    Agent Support Pilot
 
-**The Problem:**      Traditional support bots are linera and brittle.
+**The Problem:**      Traditional support bots are linear and brittle.
 
 **The Solution:**     A multi-agent system built on LangGraph that uses a state-of-art machine approach and Python, LangChain intelligence layer to handle non-deterministic workflow.
 
