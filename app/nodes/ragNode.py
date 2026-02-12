@@ -8,7 +8,6 @@ from app.utility import GraphContext, GraphState
 from langgraph.runtime import Runtime
 from langchain_chroma import Chroma
 from langchain_community.embeddings import FastEmbedEmbeddings
-from langchain_core.document_loaders import Blob
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
