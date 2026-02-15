@@ -7,7 +7,7 @@ import dotenv
 from app.utility import GraphContext, GraphState
 from langgraph.runtime import Runtime
 from langchain_chroma import Chroma
-from langchain_community.embeddings import FastEmbedEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
@@ -90,6 +90,7 @@ class VectorDb:
     def __init__(self, collection: str = "") -> None:
         self.__collection = collection or "rag_collection"
         self.__embedModel = "BAAI/bge-small-en-v1.5"
+        self.__embedPath = "http://embedding-engine:80"
         self.__dbPath = Path(os.getenv("VECTORDB_PATH", "chromedb"))
         self.__documentsPath = Path(
             os.getenv("VECTORDB_DOCUMENT_PATH", "chromaDocuments")
@@ -98,8 +99,11 @@ class VectorDb:
             self.__insertDocs()
 
     @cached_property
-    def __embeddings(self) -> FastEmbedEmbeddings:
-        return FastEmbedEmbeddings(model_name=self.__embedModel)
+    def __embeddings(self) -> HuggingFaceEndpointEmbeddings:
+        return HuggingFaceEndpointEmbeddings(
+            model=self.__embedPath,
+            task="feature-extraction",
+        )
 
     @cached_property
     def __db(self) -> Chroma:

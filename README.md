@@ -74,6 +74,20 @@ The system is designed with a **Headless UI**, allowing for seamless integration
 * **Angular Enterprise Suite**: Currently architecting a high-performance dashboard using **Angular 21** to provide real-time monitoring of agent states, token usage, and human-in-the-loop intervention interfaces.
 * **Reactive State**: Utilizing RxJS for managing real-time WebSocket streams between the FastAPI backend and the Angular frontend.
 
+### 4. High-Performance Container Architecture
+I don't just "containerize" code; I engineer production-ready AI ecosystems. This implementation demonstrates my senior-level understanding of security, scale, and performance.
+
+* **Decoupled AI Sidecar Strategy**: By separating the Python application from the **Rust-based TEI inference engine**, I’ve created a microservice architecture that allows for independent scaling and prevents heavy embedding compute from blocking business logic.
+
+
+* **Zero-Trust Security & Identity Parity**: I bypassed the "beginner's trap" of using `0777` permissions. Instead, I implemented a non-root **`appuserasp`** with numeric UID mapping (**1000:1000**), ensuring the system is secure, compliant with enterprise audits, and perfectly synced with host-machine volume permissions.
+
+
+* **Deterministic Orchestration**: Using **`service_healthy`** dependency gates and custom health-probes, I ensure the 130MB BGE model is fully resident in RAM before the application accepts its first request, eliminating "Cold Start" failures in production.
+* **Hardware-Aware Efficiency**: This stack is optimized for **AVX-512/AMX** CPU instructions using the **TEI cpu-1.7** image and explicit thread management (`OMP_NUM_THREADS=4`), delivering GPU-level latency on cost-effective commodity hardware.
+
+
+
 ---
 
 ## 🗺 Project Roadmap

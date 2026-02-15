@@ -125,8 +125,6 @@ async def runGraph(request: SocketRequest, ws: WebSocket):
         pilotGraph = getCompiledGraph()
         curr_state = await pilotGraph.aget_state(config)
 
-        logger.info(curr_state.next)
-
         if curr_state.next and request.status == "interrupted":
             """Resume from interrupt"""
             await interruptedGraph(request, ws, config)

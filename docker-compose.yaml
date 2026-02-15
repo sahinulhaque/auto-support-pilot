@@ -1,0 +1,40 @@
+services:
+  # Microservice: Seperated ai embeddings for RAG 
+  embedding-engine:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.7
+    container_name: asp-embedding-engine
+    command: --model-id BAAI/bge-small-en-v1.5
+    environment:
+      - OMP_NUM_THREADS=4
+    ports:
+      - "8080:80"
+    volumes:
+      - ./model_cache:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  # Application Service - Python LangGraph App
+  asp-application:
+    user: "1000:1000"
+    build: .
+    container_name: asp-app-container
+    depends_on:
+      embedding-engine:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ENV=development
+    ports:
+      - "8000:8000"
+      - "8501:8501"
+    volumes:
+      - .:/app  # reload code changes instantly
+      - ./chromaDocuments:/app/chromaDocuments
+      - ./sqldb:/app/sqldb
+      - ./chromadb:/app/chromadb
+    restart: unless-stopped
