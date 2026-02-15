@@ -1,10 +1,17 @@
 # fastapp.py
 
 import atexit
+import json
 import logging
 import uuid
 from dotenv import load_dotenv
-from fastapi import FastAPI, WebSocket, Request, WebSocketException, status
+from fastapi import (
+    FastAPI,
+    WebSocket,
+    Request,
+    status,
+    WebSocketDisconnect,
+)
 from fastapi.concurrency import asynccontextmanager
 from fastapi.responses import JSONResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -104,25 +111,36 @@ async def aiWebSocket(ws: WebSocket):
     logger.info("Connection established %s", ws.client)
     try:
         while True:
-            data = await ws.receive_json()
-            if not data:
-                continue
+            try:
+                data = await ws.receive_json()
+                if not data:
+                    continue
+                requestData = SocketRequest.model_validate(data, extra="ignore")
+                if not requestData.requestId:
+                    requestData.requestId = requestId
 
-            requestData = SocketRequest.model_validate(data, extra="ignore")
-            if not requestData.requestId:
-                requestData.requestId = requestId
+                await runGraph(requestData, ws)
+            except Exception as err:
+                logger.exception(
+                    "Server level exception. %s", err, extra={"method": "aiWebSocket"}
+                )
+                await ws.send_json(
+                    json.dumps({"error": True, "message": "Internal Server Error."})
+                )
 
-            await runGraph(requestData, ws)
-
-    except WebSocketException as err:
+    except WebSocketDisconnect as err:
         logger.exception(
             "Socket level exception. %s", err, extra={"method": "aiWebSocket"}
         )
         if ws.client_state == WebSocketState.CONNECTED:
-            await ws.send_json({"error": True, "message": "Internal Server Error."})
+            await ws.send_json(
+                json.dumps({"error": True, "message": "Internal Server Error."})
+            )
     except Exception as err:
         logger.exception(
             "Server level exception. %s", err, extra={"method": "aiWebSocket"}
         )
         if ws.client_state == WebSocketState.CONNECTED:
-            await ws.send_json({"error": True, "message": "Internal Server Error."})
+            await ws.send_json(
+                json.dumps({"error": True, "message": "Internal Server Error."})
+            )

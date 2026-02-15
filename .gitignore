@@ -43,6 +43,7 @@ sqlite3.db
 chromadb/
 chromaDocuments/
 sqldb/
+model_cache/
 
 # Misc
 *.log
@@ -50,6 +51,7 @@ sqldb/
 *.bak
 
 # Scripts
+dockerScripts.sh
 mockTest.sh
 preview.py
 
