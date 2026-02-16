@@ -32,6 +32,7 @@ The core of the system is a **Directed Acyclic Graph (DAG)** orchestrated by Lan
 
 * **ClassificationIntentNode (START)**: Acts as the gateway, utilizing high-reasoning LLMs to extract user intent, entities, and sentiment.
 * **Conditional Routing**: A logic-gate that evaluates the classification output to determine the next optimal node.
+* **HumanInLoop**: Essential for gathering missing aiosqlite parameters (e.g., Order ID) before SalesNode.
 * **SalesNode**: Integrated with `aiosqlite` for asynchronous retrieval of order details and customer history, ensuring the agent has "live" business context.
 * **RagNode**: Executes vector-backed policy retrieval using ChromaDB to answer knowledge-based inquiries.
 * **GeneralNode**: Handles low-stakes conversational engagement and empathetic responses.
@@ -42,11 +43,14 @@ graph TD
     Start((START)) --> Classify[ClassificationIntentNode]
     Classify --> Router{Intent Router}
     
-    Router -->|Sales/Orders| Sales[SalesNode + aiosqlite]
+    Router -->|Wait| HumanInLoop([HumanInLoop: Wait for Human Input])
     Router -->|Knowledge Base| RAG[RagNode + VectorDB]
     Router -->|General Chat| General[GeneralNode]
+
+    HumanInLoop -- "Answered" --> Sales[SalesNode + aiosqlite]
+    HumanInLoop -- "Rejected" --> End((END))
     
-    Sales --> End((END))
+    Sales --> End
     RAG --> End
     General --> End
 
