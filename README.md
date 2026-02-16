@@ -48,8 +48,8 @@ graph TD
     Router -->|Knowledge Base| RAG[RagNode + VectorDB]
     Router -->|General Chat| General[GeneralNode]
 
-    HumanInLoop -. "Answered" -.> Sales[SalesNode + aiosqlite]
-    HumanInLoop -. "Rejected" -.> End((END))
+    HumanInLoop -. "Answered" .-> Sales[SalesNode + aiosqlite]
+    HumanInLoop -. "Rejected" .-> End((END))
     
     Sales --> End
     RAG --> End
