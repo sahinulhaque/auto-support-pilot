@@ -11,6 +11,7 @@
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-F05032?style=for-the-badge&logo=chroma&logoColor=white)
 ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 ## 🚀 The Vision
 
@@ -47,8 +48,8 @@ graph TD
     Router -->|Knowledge Base| RAG[RagNode + VectorDB]
     Router -->|General Chat| General[GeneralNode]
 
-    HumanInLoop -- "Answered" --> Sales[SalesNode + aiosqlite]
-    HumanInLoop -- "Rejected" --> End((END))
+    HumanInLoop -. "Answered" -.> Sales[SalesNode + aiosqlite]
+    HumanInLoop -. "Rejected" -.> End((END))
     
     Sales --> End
     RAG --> End
@@ -116,7 +117,7 @@ The containerize code engineered for a production-ready AI ecosystems, security,
 * **Cost Efficiency**: Smart routing to SLMs (Small Language Models) for general chat reduces API overhead by ~30%.
 * **Human-in-the-Loop**: Designed to reduce support ticket volume by automating the 80% of repetitive queries, freeing human agents for high-value tasks.
 * **Accuracy**: RAG-constrained prompts eliminate hallucinations by strictly grounding responses in the `VectorDB` context.
-* **Reliability**: Pydantic schema validation build a guardrail against each request from the user in the web socket then to the Langraph Nodes then json response to user. 
+* **Reliability**: Pydantic schema validation build a guardrail against each request from the user in the web socket then to the Langraph Nodes then json response to user.
 
 ---
 
@@ -127,5 +128,6 @@ The containerize code engineered for a production-ready AI ecosystems, security,
 > 1. **Scalability**: Systems that don't break under load.
 > 2. **Predictability**: Eliminating hallucinations and ensuring brand alignment.
 > 3. **Observability**: Global `requestId` tracing and structured logging for auditability.
+> 4. **Microservices & Docker**: Engineering containerized AI modules that ensure environment friendly and horizontal scaling across cloud-native clusters.
 
 ---
