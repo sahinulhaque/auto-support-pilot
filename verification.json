@@ -1,0 +1,42 @@
+{
+  "profile": "sahinulhaque",
+  "repository": "agent-support-pilot",
+  "dev_notes": "Integrated state-saving and persistence using LangGraph's Checkpointer to ensure the support agent handles interruptions gracefully.",
+  "certifications": [
+    {
+      "id": "langgraph-001",
+      "name": "LangGraph",
+      "issuer": "Langchain Academy",
+      "status": "Verified",
+      "evidence": {
+        "type": "codebase_implementation",
+        "files": ["app/graph.py"]
+      }
+    },
+    {
+      "id": "langchain-2026",
+      "name": "LangChain",
+      "issuer": "Langchain Academy",
+      "status": "Verified",
+      "evidence": {
+        "type": "state_machine_logic",
+        "files": ["app/nodes/ragNode.py"]
+      }
+    },
+    {
+      "id": "langchain-deepagents-2026",
+      "name": "LangChain DeepAgents",
+      "issuer": "Langchain Academy",
+      "status": "Verified",
+      "evidence": {
+        "type": "state_machine_logic",
+        "files": ["app/nodes/humanInLoopNode.py"]
+      }
+    }
+  ],
+  "technical_stack": {
+    "orchestration": ["LangGraph", "LangChain"],
+    "agent_type": "Support Agent",
+    "deployment": "Docker/Python 3.12"
+  }
+}
