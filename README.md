@@ -131,3 +131,12 @@ The containerize code engineered for a production-ready AI ecosystems, security,
 > 4. **Microservices & Docker**: Engineering containerized AI modules that ensure environment friendly and horizontal scaling across cloud-native clusters.
 
 ---
+
+## 🎓 AI Certifications & Verified Skills
+*Building with industry-validated patterns.*
+
+| Certification | Applied Skill in this Repo | Verification |
+| :--- | :--- | :--- |
+| **LangGraph** | Managed complex state & cycles in `app/graph.py` | [![LangGraph](https://img.shields.io/badge/LangGraph-8A2BE2?logo=langgraph&logoColor=white)](https://academy.langchain.com/certificates/vuqewv7v5t) |
+| **LangChain** | Built modular tool-calling chains in `app/nodes/ragNode.py` | [![LangChain](https://img.shields.io/badge/LangChain-0052FF?logo=langchain&logoColor=white)](https://academy.langchain.com/certificates/h9hatnnagx) |
+| **Deep Agents** | Integrated human-in-the-loop workflows `app/nodes/humanInLoopNode.py` | [![LangChain](https://img.shields.io/badge/LangChain-DeepAgents-red?logo=langchain&logoColor=white)](https://academy.langchain.com/certificates/blohhqomfv) |
