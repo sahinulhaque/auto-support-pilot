@@ -32,6 +32,16 @@
         "type": "state_machine_logic",
         "files": ["app/nodes/humanInLoopNode.py"]
       }
+    },
+    {
+      "id": "applied-skills-2026",
+      "name": "Applied Skills Challenge: Create custom agents",
+      "issuer": "Microsoft",
+      "status": "Verified",
+      "evidence": {
+        "type": "custom_agents",
+        "url": ["https://learn.microsoft.com/en-us/users/sahinulhaque-8590/achievements/pgyudal4"]
+      }
     }
   ],
   "technical_stack": {
